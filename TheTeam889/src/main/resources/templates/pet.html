@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Home Page</title>
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" href="/static/bootstrap.min.css" th:href="@{/bootstrap.min.css}" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</head>
+<body style="background-color: #d5d5d5">
+<div th:replace="fragments/header :: header">
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <!-- Start -->
+        <div class="col-lg-4">
+
+            <!-- Start -->
+             <div class="row">
+                 <div class="col-md-8" >
+                     <h4>Pet Form</h4>
+                 </div>
+             </div>
+            <!-- End -->
+
+
+            <form action="#" th:action="${next}" th:object="${petform}" method="post" >
+                <div class="row form-group">
+                    <div class="col-lg-2"><label>Status</label></div>
+                    <div class="col-sm-4 bg-primary">
+                        <input type="radio"  th:value="'AVAILABLE'" th:field="*{status}"><small>AVAILABLE</small>
+                    </div>
+                    <div class="col-sm-3 bg-primary">
+                        <input type="radio"  th:value="'SOLD'"  th:field="*{status}"><small>SOLD</small>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-lg-2"><label>Species</label></div>
+                    <div class="col-lg-2">
+                        <input type="text" th:field="*{species}" />
+                    </div>
+                </div>
+                <!-- End -->
+
+                <!-- Start -->
+                <div class ="row form-group">
+                    <div class="col-md-2">
+                        <label>Age</label>
+                    </div>
+                    <div class="col-md-3">
+                    <input  type="number" class="input-sm" th:field="*{age}" />
+                    </div>
+                </div>
+                <!-- End -->
+                <div class="row form-group">
+                    <div class="col-lg-2"><label>Fed Day</label></div>
+                    <div class="col-lg-2">
+                        <input type="date" th:field="*{fedday}" />
+                    </div>
+                </div>
+
+
+
+                <!-- Start -->
+                <div class="row form-group">
+                    <div class="col-md-2"><label>Price</label></div>
+                    <div class="col-md-6">
+                        <div class="input-group">
+                            <input type="text" class="form-control" th:field="*{price}">
+
+                                <span class="input-group-addon">$</span>
+                                <span class="input-group-addon">0.00</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- End -->
+
+                <!-- Start -->
+                <div class ="row form-group">
+                    <div class="col-md-3">
+                        <label>Discount</label>
+                    </div>
+                    <div class="col-md-2 input-group">
+                        <input  type="number" class="input-sm" th:field="*{discount}" size="4" />
+                    </div>
+                </div>
+
+                <!-- End -->
+
+                <!-- Start -->
+                <div class="row">
+                    <div class="col-md-4 form-group">
+                        <button type="submit"  class="btn btn-primary">Submit</button>
+                    </div>
+                </div>
+                <!-- End -->
+            </form>
+
+
+
+        </div>
+        <!-- End -->
+
+        <!-- Start-->
+        <div class="col-lg-8">
+            <div class="row">
+                <div class="col-7">
+                    <h4>Table of PETS</h4>
+                </div>
+            </div>
+            <div class="row-12">
+                    <table class="table table-sm table-dark">
+                        <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Species</th>
+                            <th scope="col">Age</th>
+                            <th scope="col">Fed Day</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Discount</th>
+                            <th scope="col">Status</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="pet : ${pets}">
+                            <td th:text="${pet.id}"></td>
+                            <td th:text="${pet.species}"></td>
+                            <td th:text="${pet.age}"></td>
+                            <td th:text="${pet.fedday}"></td>
+                            <td th:text="${pet.price}"></td>
+                            <td th:text="${pet.discount}"></td>
+                            <td th:text="${pet.status}"></td>
+                            <td>
+                                <a th:href="@{'/delete/__${pet.id}__'}" class="btn btn-danger btn-sm"><span>Delete </span></a>
+                                |
+                                <a th:href="@{'/update/__${pet.id}__'}" class="btn btn-success btn-sm"><span>Update </span></a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+            </div>
+        </div>
+        <!-- End -->
+
+    </div>
+</div>
+</div>
+            <div th:replace="fragments/footer :: footer"></div>
+    </div>
+</div>
+</body>
+
+</html>

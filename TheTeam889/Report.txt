@@ -1,0 +1,1 @@
+Pet(id=1002, species=BIRD, age=3, fedday=2018-10-13, price=150.50, discount=10, status=AVAILABLE)Pet(id=1004, species=RAT, age=10, fedday=2018-10-10, price=170.50, discount=10, status=AVAILABLE)

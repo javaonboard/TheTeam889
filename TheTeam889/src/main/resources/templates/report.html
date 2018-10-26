@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Report Page</title>
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" href="/static/bootstrap.min.css" th:href="@{/bootstrap.min.css}" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</head>
+<body style="background-color: #d5d5d5">
+<div th:replace="fragments/header :: header">
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <!-- Start -->
+        <div class="col-lg-4">
+
+            <!-- Start -->
+            <div class="row">
+                <div class="col-md-8" >
+                    <h4>Select Status to get your report.</h4>
+                </div>
+            </div>
+            <!-- End -->
+
+              <div class="row form-group mp">
+                      <ul>
+                              <div class="row checkbox mp">
+                                  <div class="col-md-6">
+                                      <a th:href="@{'/report/__${st.available}__'}" class="btn btn-success btn-sm"><span>AVAILABLE </span></a>
+                                      <a th:href="@{'/report/__${st.sold}__'}" class="btn btn-success btn-sm"><span>SOLD </span></a>
+                                  </li>
+                                  </div>
+                              </div>
+
+                      </ul>
+
+              </div>
+
+        </div>
+
+        <!-- End -->
+
+        <!-- Start-->
+        <div class="col-lg-8">
+            <div class="row">
+                <div class="col-7">
+                    <h4>Result of Report</h4>
+                </div>
+            </div>
+            <div class="row-12">
+                <table class="table table-sm table-dark">
+                    <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Species</th>
+                        <th scope="col">Age</th>
+                        <th scope="col">Fed Day</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Discount</th>
+                        <th scope="col">Status</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="pet : ${reported}">
+                        <td th:text="${pet.id}"></td>
+                        <td th:text="${pet.species}"></td>
+                        <td th:text="${pet.age}"></td>
+                        <td th:text="${pet.fedday}"></td>
+                        <td th:text="${pet.price}"></td>
+                        <td th:text="${pet.discount}"></td>
+                        <td th:text="${pet.status}"></td>
+                        <td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        <!-- End -->
+            <div class="row">
+                <div class="col-md-4">
+                    <a type="button" class="btn btn-default" href="/download/Report.txt" >Download</a>
+
+                </div>
+            </div>
+    </div>
+
+</div>
+</div>
+<div th:replace="fragments/footer :: footer"></div>
+</div>
+</div>
+</body>
+
+</html>
