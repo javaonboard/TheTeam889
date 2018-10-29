@@ -2,7 +2,7 @@
 amarillo java contest 2018
 
 	Spring-boot application.
-	please use Inteliji to open the project then exeute the main method in TheTeam889Application class.
+	please use IntelliJ to open the project then exeute the main method in TheTeam889Application class.
 	may need to clean and recompile the project and download the Dependencies nad fix class path issues.
 	
 	for check the dashboard please use the URl: localhost:8999  you can change the port in application.peroperties
